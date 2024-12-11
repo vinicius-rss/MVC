@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Inscrições</title>
+    <link rel="stylesheet" href="/sistema_gerenciamento_cursos/src/main/resources/static/css/style.css">
+</head>
+<body>
+    <h1>Lista de Inscrições</h1>
+    <a href="form.html">Nova Inscrição</a>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Estudante</th>
+                <th>Curso</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="inscricao : ${inscricoes}">
+                <td th:text="${inscricao.id}"></td>
+                <td th:text="${inscricao.estudante.nome}"></td>
+                <td th:text="${inscricao.curso.nome}"></td>
+                <td>
+                    <a th:href="@{/inscricao/editar/{id}(id=${inscricao.id})}">Editar</a>
+                    <a th:href="@{/inscricao/excluir/{id}(id=${inscricao.id})}">Excluir</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

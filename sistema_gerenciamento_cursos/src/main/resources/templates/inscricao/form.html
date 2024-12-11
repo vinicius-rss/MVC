@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Inscrição</title>
+    <link rel="stylesheet" href="/sistema_gerenciamento_cursos/src/main/resources/static/css/style.css">
+</head>
+<body>
+    <h1>Cadastro de Inscrição</h1>
+    <form th:action="@{/inscricao/salvar}" method="post">
+        <input type="hidden" th:field="*{id}"/>
+        
+        <label for="estudante">Estudante:</label>
+        <select th:field="*{estudante.id}">
+            <option th:each="estudante : ${estudantes}" 
+                    th:value="${estudante.id}" 
+                    th:text="${estudante.nome}"></option>
+        </select>
+        
+        <label for="curso">Curso:</label>
+        <select th:field="*{curso.id}">
+            <option th:each="curso : ${cursos}" 
+                    th:value="${curso.id}" 
+                    th:text="${curso.nome}"></option>
+        </select>
+        
+        <button type="submit">Salvar</button>
+    </form>
+    <a href="listar.html">Voltar</a>
+</body>
+</html>
